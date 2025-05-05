@@ -92,9 +92,8 @@ Anaconda 是一個廣受歡迎的 Python 和 R 語言發行版，專為科學計
     ```
     *   請謹慎使用此指令。
 
-## Miniconda (輕量級選擇)
-
-如果您只需要 `conda` 環境管理功能，不想一開始就安裝大量套件，可以考慮安裝 [Miniconda](https://docs.conda.io/en/latest/miniconda.html)。Miniconda 只包含 `conda` 及其依賴項，您可以後續再手動安裝所需套件。
+## 好用package
+jupyter
 
 ---
 

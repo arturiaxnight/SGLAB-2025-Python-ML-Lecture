@@ -6,10 +6,10 @@
 
 # %% Intro to Python Data Types
 # Python 有多種內建資料型態，主要包含：
-# Numbers (數字): int, float, complex
+# Numbers (數字): int, float
 # Sequences (序列): str, list, tuple
 # Mappings (映射): dict
-# Sets (集合): set, frozenset
+# Sets (集合): set
 # Booleans (布林): bool (True, False)
 # NoneType: None
 
