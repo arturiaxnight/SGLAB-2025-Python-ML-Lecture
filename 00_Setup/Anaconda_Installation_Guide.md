@@ -93,7 +93,7 @@ Anaconda 是一個廣受歡迎的 Python 和 R 語言發行版，專為科學計
     *   請謹慎使用此指令。
 
 ## 好用package
-jupyter
+pip install jupyter
 
 ---
 
