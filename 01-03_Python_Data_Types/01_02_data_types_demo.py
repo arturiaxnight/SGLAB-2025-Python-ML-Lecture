@@ -3,6 +3,8 @@
 示範 Python 基本資料型態與操作
 根據提供的課程列表
 """
+# $pip install jupyter
+
 
 # %% Intro to Python Data Types
 # Python 有多種內建資料型態，主要包含：
@@ -18,8 +20,11 @@ num_int = 10
 num_float = 3.14
 text_string = "Hello Python"
 my_list = [1, 2, 3]
+print(my_list[0]) # 取出列表的第一個元素
+list_b = ['a', 'b', 'c']
 my_tuple = (4, 5, 6)
 my_dict = {"name": "Alice", "age": 30}
+print(my_dict["name"])
 my_set = {7, 8, 9}
 my_bool = True
 my_none = None
@@ -56,7 +61,9 @@ print("--- Functions for Numbers ---")
 num = -7.89
 
 print(f"abs({num}) = {abs(num)}")             # 絕對值
+abs(-9)
 print(f"round({num}) = {round(num)}")           # 四捨五入到整數
+# round(3.3) => 3
 print(f"round({num}, 1) = {round(num, 1)}")   # 四捨五入到小數第一位
 print(f"pow(4, 3) = {pow(4, 3)}")             # 次方 (同 4 ** 3)
 print(f"max(1, 5, 2) = {max(1, 5, 2)}")       # 最大值
@@ -67,8 +74,13 @@ print("\n")
 # %% Variable and Assignment
 print("--- Variable and Assignment ---")
 x = 100         # 將 100 賦值給變數 x
+# x <= 100
 y = x           # 將變數 x 的值賦值給變數 y
+# y <= x <= 100
 x = 200         # 重新賦值給 x，y 的值不受影響 (因為數字是不可變的)
+
+# result = 3   <= 7
+# resutl = 7
 
 print(f"x = {x}")
 print(f"y = {y}")
@@ -76,6 +88,9 @@ print(f"y = {y}")
 # 多重賦值
 a, b, c = 1, 2, 3
 print(f"Multiple assignment: a={a}, b={b}, c={c}")
+a = 1
+b = 2
+c = 3
 
 # 交換變數
 a, b = b, a
@@ -85,19 +100,25 @@ print("\n")
 
 # %% String Indexing and Slicing
 print("--- String Indexing and Slicing ---")
-s = "Hello, World!"
+s = "Hello, World!" # 13個字元的字串
+# ["H", "e", "l", "l", "o", ",", " ", "W", "o", "r", "l", "d", "!"]
+
 #   H e l l o ,   W o r l d !
-#   0 1 2 3 4 5 6 7 8 9 0 1 2 (索引)
+#   0 1 2 3 4 5 6 7 8 9 10 11 12 (索引)
+
 # -3-2-1 (負索引)
 
 print(f"String: {s}")
 print(f"s[0] = {s[0]}")         # 第一個字元
 print(f"s[7] = {s[7]}")         # 第八個字元
-print(f"s[-1] = {s[-1]}")        # 最後一個字元
+print(f"s[-1]  {s[-1]}")        # 最後一個字元
 print(f"s[-5] = {s[-5]}")        # 倒數第五個字元
 
 # 切片 (Slicing) [start:stop:step]
 # stop 索引本身不包含在內
+s  = "qnap_abce_xyz"
+print(s[-3::])
+
 print(f"s[0:5] = {s[0:5]}")     # 從索引 0 到 4 (Hello)
 print(f"s[7:12] = {s[7:12]}")    # 從索引 7 到 11 (World)
 print(f"s[:5] = {s[:5]}")       # 從頭到索引 4 (Hello)
@@ -120,6 +141,7 @@ print(str2)
 # 如果字串內包含引號，可以交錯使用或使用跳脫字元
 str3 = "He said, 'Hello!'"
 str4 = 'She replied, "Hi there!"'
+'It\'s a beautiful day.'
 str5 = 'It\'s a beautiful day.' # 使用 \ 跳脫單引號
 str6 = "This is a \"quote\"."    # 使用 \ 跳脫雙引號
 print(str3)
@@ -133,7 +155,16 @@ multi-line
 string."""
 print(multi_line_str)
 
+print("""
+這段程式是在做什麼
+123
+123
+123
+123
+""")
+
 # 換行符 \n
+# f"{abd} \n {sdf}"
 line_change_str = "First line.\nSecond line."
 print(line_change_str)
 
@@ -168,7 +199,7 @@ name = "Alice"
 age = 30
 city = "Taipei"
 
-# .format() 方法
+# .format() 方法 老方法
 formatted_str1 = "My name is {}, I am {} years old, and I live in {}."\
                  .format(name, age, city)
 print(f".format(): {formatted_str1}")
@@ -201,7 +232,8 @@ text = "python is fun, python is easy."
 
 # .find(substring)
 # 返回子字串第一次出現的索引，找不到則返回 -1
-print(f"text.find('python') = {text.find('python')}")       # 0
+print(f"text.find('python') = {text.find('python')}")      # 0
+print(text[0:6])
 print(f"text.find('is') = {text.find('is')}")           # 7
 print(f"text.find('java') = {text.find('java')}")         # -1
 print(f"text.find('is', 8) = {text.find('is', 8)}")     # 20 (從索引 8 開始找)
@@ -209,11 +241,23 @@ print(f"text.find('is', 8) = {text.find('is', 8)}")     # 20 (從索引 8 開始
 # .count(substring)
 # 計算子字串出現的次數
 print(f"text.count('python') = {text.count('python')}")   # 2
+a = [3,3,4,4,5,5,6,6]
+print(f"a.count(3) = {a.count(3)}")                     # 2
 print(f"text.count('is') = {text.count('is')}")       # 2
 print(f"text.count('o') = {text.count('o')}")         # 2
 
 # .startswith(prefix)
 # 檢查字串是否以指定前綴開頭
+
+brain= ["lh_wefoiuwehfoij",
+"lh_woeifwoijf",
+"rh_woijwoijfeowij",
+"rh_owijfewofji"]
+
+
+print("lh_wefoiuwehfoij" in brain)
+
+text.startswith("lh_") 
 print(f"text.startswith('python') = {text.startswith('python')}") # True
 print(f"text.startswith('java') = {text.startswith('java')}")   # False
 
@@ -231,6 +275,7 @@ my_string = "Hello"
 # my_string[0] = 'J' # 這會導致 TypeError: 'str' object does not support item assignment
 print(f"Original string: {my_string}")
 new_string = "J" + my_string[1:] # 需要創建新字串來達到修改效果
+# my_string[1:] = ello
 print(f"Modified string: {new_string}")
 
 # 字串串接 (+) 與重複 (*)
@@ -331,8 +376,30 @@ student = {
     "age": 25,
     "major": "Computer Science",
     "courses": ["Math", "Physics"],
-    "contact": {"email": "bob@example.com"}
+    "contact": {"email": ["bob@example.com","bob2@example.com"]}
 }
+
+print(student['contact']['email'][0]) # 取出聯絡資訊的 email
+print(student["courses"][1]) # 取出第一門課程
+
+
+#%%
+#classes = [student, student, student]
+classes = []
+for i in range(3):
+    classes.append(
+        {"name": f"Student {i+1}",
+            "age": 20 + i,
+            "major": "Computer Science",
+            "courses": ["Math", "Physics"],
+        }
+    )
+
+print(classes)
+classes[0]["name"] = "Alice"
+print(classes)
+
+#%%
 
 print(f"Empty dictionary: {empty_dict}")
 print(f"Student dictionary: {student}")
@@ -355,6 +422,8 @@ print(f"Updated student age: {student['age']}")
 # 新增鍵值對 (Adding key-value pairs)
 student['city'] = 'New York'
 print(f"Added city: {student}")
+
+student["grade"] = 0
 print("\n")
 
 
@@ -416,6 +485,7 @@ student.clear()
 print(f"After clear: {student}")
 print("\n")
 
+# 下周從這裡開始
 
 # %% What can be a key?
 print("--- What can be a key? ---")
