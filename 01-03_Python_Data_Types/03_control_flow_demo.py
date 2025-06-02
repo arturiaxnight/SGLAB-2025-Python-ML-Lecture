@@ -36,12 +36,12 @@ print("\n--- if-elif-else 敘述 ---")
 score = 85
 if score >= 90:
     print("等級 A")
-elif score >= 80:
-    print("等級 B")
-elif score >= 70:
-    print("等級 C")
-elif score >= 60:
+elif score >= 60 and score < 70:
     print("等級 D")
+elif score >= 80 and score < 90:
+    print("等級 B")
+elif score >= 70 and score < 80:
+    print("等級 C")
 else:
     print("等級 F (不及格)")
 
@@ -56,7 +56,7 @@ if num > 0:
         print(f"{num} 是奇數")
 elif num == 0:
     print(f"{num} 是零")
-else:
+else: # num < 0
     print(f"{num} 是負數")
 
 # %% 條件表達式 (Conditional Expressions / Ternary Operator)
@@ -94,12 +94,17 @@ colors = ("紅", "綠", "藍")
 for color in colors:
     print(color)
 
+# %%
 # 使用 range() 函數
 print("\n使用 range():")
 print("range(5):")
+x = 5
 for i in range(5): # 從 0 到 4
+    x = x + 1
+    print(f"x={x}")
     print(i)
-
+# %%
+# [2,6)
 print("\nrange(2, 6):")
 for i in range(2, 6): # 從 2 到 5
     print(i)
@@ -125,7 +130,7 @@ for i in range(1, 6):
         continue
     print(i)
 
-# %% for 迴圈的 else 子句
+# %% for 迴圈的 else 子句  <---> if-else
 # 當迴圈正常結束 (沒有被 break 中斷) 時執行
 print("\n--- for 迴圈的 else 子句 ---")
 for i in range(3):
@@ -146,9 +151,10 @@ else:
 # %% while 迴圈 (While Loops)
 print("\n--- while 迴圈 ---")
 count = 0
-while count < 5:
+while count < 5: # 4 3 2 1 0 -1 -2 -3 -.......
     print(f"Count is: {count}")
     count += 1 # 重要：更新條件變數，避免無限迴圈
+
 
 # %% while 迴圈中的 break 和 continue
 print("\n--- while 迴圈中的 break 和 continue ---")
@@ -198,40 +204,29 @@ print("--- 練習：BMI 計算與體重狀況判斷 ---")
 # 說明：讓使用者輸入身高體重，或使用預設資料集進行迴圈處理
 
 # 單次輸入計算
-try:
-    height_cm_str = input("請輸入您的身高（公分）: ")
-    weight_kg_str = input("請輸入您的體重（公斤）: ")
+height_cm_str = input("請輸入您的身高（公分）: ")
+weight_kg_str = input("請輸入您的體重（公斤）: ")
 
-    # 檢查輸入是否為空，若是則提示並跳過
-    if not height_cm_str or not weight_kg_str:
-        print("身高和體重不可為空。請重新執行並輸入有效值。")
-    else:
-        height_cm = float(height_cm_str)
-        weight_kg = float(weight_kg_str)
+if float(height_cm) <= 0 or float(weight_kg) <= 0:
+    print("身高和體重必須是正數。")
+else:
+    height_m = height_cm / 100
+    bmi = weight_kg / (height_m ** 2)
+    print(f"您的 BMI 是: {bmi:.2f}")
 
-        if height_cm <= 0 or weight_kg <= 0:
-            print("身高和體重必須是正數。")
-        else:
-            height_m = height_cm / 100
-            bmi = weight_kg / (height_m ** 2)
-            print(f"您的 BMI 是: {bmi:.2f}")
+    if bmi < 18.5:
+        print("體重狀況：過輕")
+    elif 18.5 <= bmi < 24:
+        print("體重狀況：正常")
+    elif 24 <= bmi < 27:
+        print("體重狀況：過重")
+    elif 27 <= bmi < 30:
+        print("體重狀況：輕度肥胖")
+    elif 30 <= bmi < 35:
+        print("體重狀況：中度肥胖")
+    else: # bmi >= 35
+        print("體重狀況：重度肥胖")
 
-            if bmi < 18.5:
-                print("體重狀況：過輕")
-            elif 18.5 <= bmi < 24:
-                print("體重狀況：正常")
-            elif 24 <= bmi < 27:
-                print("體重狀況：過重")
-            elif 27 <= bmi < 30:
-                print("體重狀況：輕度肥胖")
-            elif 30 <= bmi < 35:
-                print("體重狀況：中度肥胖")
-            else: # bmi >= 35
-                print("體重狀況：重度肥胖")
-except ValueError:
-    print("輸入無效，請輸入數字。")
-except Exception as e:
-    print(f"發生錯誤: {e}")
 
 print("\n--- 使用迴圈處理多筆資料 ---")
 # 假設我們有一組資料 (姓名, 身高cm, 體重kg)
@@ -288,3 +283,4 @@ for name, height_cm, weight_kg in data_samples:
         print(f"  計算 {name} 的 BMI 時發生未預期錯誤: {e}")
 
 print("\nEnd of Demo") 
+# %%

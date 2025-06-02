@@ -419,6 +419,20 @@ print(f"Student's phone (default): {student.get('phone', 'N/A')}") # N/A
 student['age'] = 26
 print(f"Updated student age: {student['age']}")
 
+
+# defienition: def function_name(input : type) -> return_type:
+def add(a: int, b: int)-> int: 
+    """
+    Adds two integers and returns their sum.
+
+    Args:
+        a (int): The first integer to add.
+        b (int): The second integer to add.
+
+    Returns:
+        int: The sum of a and b.
+    """
+    return a + b
 # 新增鍵值對 (Adding key-value pairs)
 student['city'] = 'New York'
 print(f"Added city: {student}")
@@ -521,6 +535,7 @@ print("--- Intro to Tuples ---")
 empty_tuple = ()
 single_element_tuple = (1,) # 注意要有逗號！沒有逗號 (1) 會被視為整數 1
 my_tuple = (1, "apple", 3.14, True)
+# [1, "apple", 3.14, True]
 
 print(f"Empty tuple: {empty_tuple}")
 print(f"Single element tuple: {single_element_tuple}, Type: {type(single_element_tuple)}")
@@ -658,7 +673,7 @@ print(f"Popped element: {popped_element}, Set after pop: {set1}")
 set1.clear() # 清空集合
 print(f"After clear: {set1}")
 
-# 子集與超集
+# 子集與超(父)集
 set_a = {1, 2, 3}
 set_b = {1, 2, 3, 4, 5}
 print(f"set_a.issubset(set_b) = {set_a.issubset(set_b)}")   # True
@@ -669,6 +684,7 @@ print("\n")
 # %% Booleans in Python
 print("--- Booleans in Python ---")
 # Boolean (布林) 型態只有兩個值：True 和 False
+# int 1 0
 
 is_active = True
 is_greater = 10 > 5
@@ -689,6 +705,7 @@ print(f"not False = {not False}")         # True
 print(f"bool(0) = {bool(0)}")       # False
 print(f"bool(1) = {bool(1)}")       # True
 print(f"bool(-1) = {bool(-1)}")      # True
+# -1 (true) int << 0 =False
 print(f"bool('') = {bool('')}")     # False
 print(f"bool('abc') = {bool('abc')}") # True
 print(f"bool([]) = {bool([])}")     # False
@@ -698,10 +715,10 @@ print(f"bool(set()) = {bool(set())}") # False (Empty set)
 print(f"bool(None) = {bool(None)}")   # False
 
 # 常用於條件判斷
-if is_active:
+if is_active: # True
     print("User is active.")
-else:
-    print("User is inactive.")
+else: # False
+    print("User is inactive.") #oisjfowijef
 print("\n")
 
 
@@ -709,6 +726,7 @@ print("\n")
 print("--- Python Comments and Type-checking ---")
 
 # 單行註解以 '#' 開頭
+# weojiweoijweoijw
 # This is a single-line comment
 
 x = 10 # 這也是一個行內註解
@@ -716,6 +734,7 @@ x = 10 # 這也是一個行內註解
 # 多行註解可以使用多個 '#' 或使用多行字串 (但後者通常用於 docstrings)
 # Line 1
 # Line 2
+# Line 3
 
 """
 This is a multi-line string often used as a docstring
@@ -724,23 +743,46 @@ It can also serve as a multi-line comment,
 but it's technically a string literal.
 """
 
+"""
+powekfpwokwpofkwpweok
+"""
+
 # Type Hinting (型態提示) - Python 3.5+
 # 幫助靜態分析工具 (如 mypy) 檢查型態，並提高程式碼可讀性
 # 它們不會在執行時強制執行型態檢查 (除非使用特殊工具)
 
-def add(a: int, b: int) -> int:
-    """This function adds two integers and returns an integer."""
-    return a + b
+
 
 result: int = add(5, 3)
 print(f"Type hint example: add(5, 3) = {result}")
-
+a = 10
+b = 20
+# %%
 name: str = "Eve"
+name = "Eve" 
+pi = 3.14159
 pi: float = 3.14159
 items: list[str] = ["apple", "banana"]
 data: dict[str, int] = {"a": 1, "b": 2}
 
 # 使用 isinstance() 進行執行時型態檢查
+#string 
+"123"
+[123,456]
+#int
+321
+45654
+# variable
+woijoijwefioj=123
+woijoijwefioj+456
+
+
+print(123+456)
+print("123"+"456")
+
+
+# %%
+
 print(f"isinstance(result, int) = {isinstance(result, int)}")     # True
 print(f"isinstance(name, str) = {isinstance(name, str)}")       # True
 print(f"isinstance(items, list) = {isinstance(items, list)}")     # True
@@ -764,22 +806,25 @@ y = 20 # 修改 y 不會影響 x
 print(f"Immutable: x={x}, y={y}")
 
 tup1 = (1, 2)
-tup2 = tup1
-# tup2[0] = 100 # TypeError, tuple is immutable
+tup2 = tup1 # (1, 2)
+tup2[0] = 100 # TypeError, tuple is immutable
 tup2 = (3, 4) # tup2 現在引用一個新的 tuple 物件，tup1 不變
 print(f"Immutable Tuple: tup1={tup1}, tup2={tup2}")
 
+# %% 
 # 對於可變物件 (list, dict, set):
 # 賦值是傳遞「引用」
 list1 = [1, 2, 3]
-list2 = list1 # list1 和 list2 指向同一個 list 物件
-list2.append(4) # 修改 list2 會影響 list1，因為它們指向同一個物件
+list2 = list1 # list1 和 list2 指向同一個 list 物件  [1,2,3]
+list2.append(4) # 修改 list2 會影響 list1，因為它們指向同一個物件 [1,2,3,4]
 print(f"Mutable List: list1={list1}, list2={list2}")
 
+# %%
 # 如果想複製列表 (淺拷貝 - shallow copy)
 list3 = list1.copy() # 或 list3 = list1[:]
 list3.append(5)
 print(f"Shallow Copy: list1={list1}, list3={list3}") # list1 不受影響
+#%%
 
 # 注意淺拷貝的限制：如果列表內還有可變物件，它們仍然共享引用
 list_a = [1, [10, 20]]
@@ -800,6 +845,7 @@ print(f"Deep Copy: list_a={list_a}, list_c={list_c}") # list_a 不受影響
 # 它不會修改原始的可迭代物件
 numbers_to_sort = [3, 1, 4, 1, 5, 9, 2]
 string_to_sort = "python"
+print(sorted(["p","y", "t", "h", "o", "n"]))
 tuple_to_sort = (6, 2, 8, 1)
 
 sorted_numbers = sorted(numbers_to_sort)
