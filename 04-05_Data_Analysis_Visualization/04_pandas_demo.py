@@ -1,3 +1,5 @@
+# pip install pandas
+#%%
 import pandas as pd
 
 #%%
@@ -375,3 +377,5 @@ print("\n" + "="*30)
 print("Lesson 4 Pandas Demo Complete.")
 print("="*30 + "\n")
 
+
+# %%
