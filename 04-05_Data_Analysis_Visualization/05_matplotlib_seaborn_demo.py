@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 # pip install seaborn scikit-learn
 #%% 
+=======
+"""
+Matplotlib: https://matplotlib.org/
+Seaborn: https://seaborn.pydata.org/
+
+"""
+#%% 1. 載入套件
+>>>>>>> 21384bb (新增 Matplotlib 和 Seaborn 的說明註解，提供相關連結以便於學習與參考。)
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
